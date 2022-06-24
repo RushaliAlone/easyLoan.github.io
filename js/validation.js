@@ -54,6 +54,20 @@ function EmailValidation() {
     sessionStorage.setItem("mailout", mailId);
 }
 
+function LoanAmtValidation() {
+    var regamt = /\d{1,9}$/;
+    var lamt = document.getElementById("loanAmt").value;
+    if (!regamt.test(lamt)) {
+        document.getElementById('submit').disabled = true;
+    }
+    else if (lamt.length > 9) {
+        document.getElementById('submit').disabled = true;
+    }
+    else {
+    enableSubmitButton();
+    }
+}
+
 
 function toWords() {
     document.getElementById('words').innerHTML = inWords(document.getElementById('loanAmt').value);  
@@ -123,6 +137,7 @@ function CaptchaValidation()
         NameValidation();
         EmailValidation();
         PanValidation();
+        LoanAmtValidation();
     }
     else {
         document.getElementById('submit').disabled = true;
