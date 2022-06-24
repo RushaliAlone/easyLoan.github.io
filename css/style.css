@@ -1,0 +1,164 @@
+body {
+    margin: 2px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(244, 248, 247);
+}
+
+.bg {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.bg .color-panel {
+    background-color: rgb(60, 145, 151);
+    height: 33%;
+    width: 100%;
+}
+
+.bg .lower-panel {
+    background-color: rgb(244, 248, 247);
+    height: 70%;
+    width: 100%;
+}
+
+.heading-div {
+    width: 65%;
+    margin: 0 auto;
+    transform: translateY(-18%);
+}
+
+.heading-div .logo {
+    width: 140px;
+    height: 120px;
+    background-image: url(../images/icons8-businessman-90.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    transform: translateY(40%);
+}
+
+.form-heading {
+    font-size: 80px;
+    font-weight: 500;
+    color: white;
+    margin: 0 auto;
+    display: inline-block;
+    width: 700px;
+    text-align: end;
+}
+
+.heading-lower {
+    margin-left: 54%;
+    font-size: 20px;
+    color: white;
+}
+
+.form-wrapper {
+    border: 2px solid rgb(212, 240, 232);
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 70px;
+    padding-bottom: 50px;
+    background-color: rgb(212, 240, 232);
+}
+
+legend{
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.wrapper ,.loan-wrapper, .captcha {
+    margin: 30px 30px;
+    border: 1px dotted rgba(165, 165, 165, 0.562);
+    padding-bottom: 15px;
+}
+
+.wrapper div {
+    height: 50px;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px;
+    margin: 1px;
+}
+.wrapper div label{
+    display: inline-block;
+    margin-left: 20px;
+    width: 130px;
+}
+.wrapper div input {
+    margin: 0px 25px;
+    width: 290px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+p{
+    margin-top: 2px;
+    margin-left: 180px;
+    font-size: 12px;
+}
+
+#words{
+    color: rgb(85, 172, 59);
+       font-size: 14px;
+}
+.holder{
+    width:600px;
+    margin:0 auto;
+}
+.img {
+    background-image: url("../images/bgcaptcha.png");
+    width: 190px;
+    height: 50px;
+    display: flex;
+}
+
+.img div {
+    display: inline-flex;
+    margin: 10px auto;
+    width: 50px;
+    height: 30px;
+    opacity: 70%;
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+#load {
+    width: 40px;
+    height: 30px;
+    margin: 5px 20px;
+    filter: invert(100%);
+}
+
+#result {
+    width: 150px;
+    height: 25px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    background-color: rgb(240, 234, 234);
+}
+input{
+    padding-left: 10px;
+}
+#submit {
+    width: 200px;
+    background-color: rgb(60, 145, 151);
+    height: 50px;
+    font-size: 25px;
+    border: 2px solid rgb(10, 70, 75);
+    border-radius: 10px;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

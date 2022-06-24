@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Loan...</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body  onload="CaptchaGenerate()">
+    <div class="bg">
+        <div class="color-panel"></div>
+        <div class="lower-panel"></div>
+    </div>
+    <div class="formgroup">
+        <div class="heading-div">
+            <h1 class="form-heading">Loan Application</h1>
+            <div class="logo"></div>
+            <span class="heading-lower">complete your Application...</span>
+        </div>
+        <div class="form-wrapper">
+            <form action="Thanks.html" class="field-wrapper">
+                <div class="wrapper">
+                    <legend>Basic Information</legend>
+                    <div>
+                        <label for="full-name">Full Name:<span style="color:red">*</span></label>
+                        <input type="text" name="full-name" id="full-name" onchange="NameValidation()" required>
+                        <p id="namemsg"></p>
+                    </div>
+                    <div>
+                        <label for="pan">Pan Card Number:<span style="color:red">*</span></label>
+                        <input type="text" name="pan" id="pan" onchange="PanValidation()" required>
+                        <p id="panmsg"></p>
+                    </div>
+                    <div>
+                        <label for="email">Email:<span style="color:red">*</span></label>
+                        <input type="email" name="email" id="email" onchange="EmailValidation()">
+                        <p id="emailmsg"></p>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <legend>Loan Type & Amount</legend>
+                    <div>
+                        <label for="loanAmt">Loan Amount:<span style="color:red">*</span></label>
+                        <input type="text" name="loanAmt" id="loanAmt" onkeyup="toWords()" required />
+                        <p id="words"></p>
+                    </div>
+                </div>
+                <div class="captcha">
+                    <legend>Verify Captcha</legend>
+                    <div class="holder">
+                        <div class="img" id="captchaExp">
+                            <div id="num1"></div>
+                            <div id="operator"></div>
+                            <div id="num2"></div>
+                            <div> = ? </div>
+                        </div>
+                        <input type="text" placeholder="        Answer Here" id="result" onchange="CaptchaValidation()" />
+                        <img src="./images/icons8-refresh-30.png" alt="load" onclick="CaptchaGenerate()" id="load">
+                        <span id="captchamsg"></span>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="./js/validation.js"></script>
+</body>
+
+</html>

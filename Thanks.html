@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Loan...</title>
+    <link rel="stylesheet" href="./css/thanks.css">
+</head>
+
+<body>
+    <h1>Dear <span id="namein"></span>,<p> Thank You For Loan Enquiry!!</p>
+    </h1>
+
+    <span class="msg">A 4-Digit Varification code will be sent to your email: <span id="mailin"></span> Please
+        enter it in the following box and submit of confirmation!!
+    </span>
+    <div class="otpdiv">
+        <button id="otp" onclick="generateOtp()">Send OTP</button>
+        <div>
+            <input type="text" id="otpout" />
+            <input type="text" id="otpin" placeholder="Enter Otp Here" />
+        </div>
+        <button onclick="ValidateOTP()" id="validOtp">Validate OTP</button>
+    </div>
+    <h3> We Will Get Back To You Soon!!</h3>
+
+    <script src="js/validation.js"></script>
+</body>
+
+</html>
