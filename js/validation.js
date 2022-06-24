@@ -146,6 +146,7 @@ function enableSubmitButton()
 function generateOtp() {
     const val = Math.floor(1000 + Math.random() * 9000);
     document.getElementById("otpout").value = val;
+    document.getElementById("otpmsg").innerHTML="";
 }
 
 var count=0;
@@ -163,7 +164,7 @@ function ValidateOTP() {
         window.location.replace("http://pixel6.co/");
     }
     else {
-        alert('Invalid OTP ');
+         document.getElementById("otpmsg").innerHTML='Invalid OTP !!! ';
     }
 }
 
