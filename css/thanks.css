@@ -34,14 +34,16 @@ h3 {
 }
 
 .otpdiv {
-    width: 550px;
+   width: 550px;
+    height: 60px;
     margin: 55px auto;
-    margin-top: 30px;
+    margin-top: 20px;
+}
 }
 .otpdiv button {
     align-items: center;
     width: 100px;
-    height: 40px;
+    height: 37px;
     background-color: rgb(168, 70, 95);
     margin: 5px;
     border: 2pxx solid rgb(134, 54, 74);
@@ -54,8 +56,15 @@ h3 {
 .otpdiv div input {
     padding-left: 10px;
     width: 100px;
-    height: 30px;
+    height: 27px;
     background-color: beige;
     margin: 10px 20px;
     border: 2px solid pink
+}
+#otpmsg{
+    color: rgb(252, 17, 0);
+    display: block;
+    text-align: right;
+    margin: 0;
+    margin-right: 20px;
 }
