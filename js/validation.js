@@ -8,7 +8,7 @@ function NameValidation() {
         document.getElementById("namemsg").style="color:red";
         document.getElementById("namemsg").innerHTML='only alphabets and spaces allowed, min two words each with min 4 characters';
     }
-    else if (!(ind > 3)) {
+    else if (ind<4)) {
         document.getElementById('submit').disabled = true; 
         document.getElementById("namemsg").style="color:red";
         document.getElementById("namemsg").innerHTML='only alphabets and spaces allowed, min two words each with min 4 characters';
@@ -29,7 +29,7 @@ function PanValidation() {
     if (!regpan.test(panId)) {
         document.getElementById('submit').disabled = true;
         document.getElementById("panmsg").style="color:red";
-        document.getElementById("panmsg").innerHTML='Pan Number should be in the form: "AAAAA 1234 B" \nNOTE:no spaces allowed in between';
+        document.getElementById("panmsg").innerHTML='Pan Number should be in the form: "AAAAA 1234 B" \nNOTE: No spaces allowed in between';
     }
     else{
         document.getElementById("panmsg").style="color:blue";
@@ -73,7 +73,9 @@ function toWords() {
     document.getElementById('words').innerHTML = inWords(document.getElementById('loanAmt').value);  
 }
 function inWords(num) {
+    //2D Array of unit and 11 to 19
     var a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+    //2D array of tens places but 2nd row is empty --arranged such that it matches the index position.
     var b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
 
     if ((num = num.toString()).length > 9)
@@ -81,14 +83,16 @@ function inWords(num) {
         document.getElementById('words').style="color:red";
         return 'Amount is Out of Range';
     }
-    n = ('000000000' + num).slice(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+    //getting number from backward direction
+    n = ('000000000' + num).slice(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);     //spaces and alphabets are not allowed
     if (!n) 
     {
         document.getElementById('words').style="color:red";
         return 'Enter Valid Amount!!'; 
     }
+    
     var str = '';
-    str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';
+    str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';        
     str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'Lakh ' : '';
     str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'Thousand ' : '';
     str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'Hundred ' : '';
