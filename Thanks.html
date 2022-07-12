@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="./css/thanks.css">
 </head>
 
-<body>
-    <h1>Dear <span id="namein"></span>,<p> Thank You For Loan Enquiry!!</p>
+<body onload="generateOtp()">
+    <h1> Dear <span id="namein"></span>,<p> Thank You For Loan Enquiry!!</p>
     </h1>
 
     <span class="msg">A 4-Digit Varification code will be sent to your email: <span id="mailin"></span> Please
-        enter it in the following box and validate for confirmation!!
+        enter it in the following box and submit of confirmation!!
     </span>
     <div class="otpdiv">
-        <button id="otp" onclick="generateOtp()">Send OTP</button>
+        <!-- <button id="otp" onclick="generateOtp()">Send OTP</button> -->
         <div>
-            <input type="text" id="otpout" />
-            <input type="text" id="otpin" placeholder="Enter Otp Here" />
+            <!-- <input type="text" id="otpout" /> -->
+            <input type="text" id="otpin" placeholder="Enter Otp Here" maxlength="4" />
         </div>
         <button onclick="ValidateOTP()" id="validOtp">Validate OTP</button>
         <p id="otpmsg"></p>
