@@ -8,7 +8,7 @@ function NameValidation() {
         document.getElementById("namemsg").style="color:red";
         document.getElementById("namemsg").innerHTML='only alphabets and spaces allowed, min two words each with min 4 characters';
     }
-    else if (ind<4)) {
+    else if (ind<4) {
         document.getElementById('submit').disabled = true; 
         document.getElementById("namemsg").style="color:red";
         document.getElementById("namemsg").innerHTML='only alphabets and spaces allowed, min two words each with min 4 characters';
@@ -24,12 +24,12 @@ function NameValidation() {
 }
 
 function PanValidation() {
-    var regpan = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+    var regpan = /[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$/;
     var panId = document.getElementById('pan').value;
     if (!regpan.test(panId)) {
         document.getElementById('submit').disabled = true;
         document.getElementById("panmsg").style="color:red";
-        document.getElementById("panmsg").innerHTML='Pan Number should be in the form: "AAAAA 1234 B" \nNOTE: No spaces allowed in between';
+        document.getElementById("panmsg").innerHTML='Pan Number should be in the form: "AAAAA 1234 B" \nNOTE:no spaces allowed in between';
     }
     else{
         document.getElementById("panmsg").style="color:blue";
@@ -68,14 +68,11 @@ function LoanAmtValidation() {
     }
 }
 
-
 function toWords() {
     document.getElementById('words').innerHTML = inWords(document.getElementById('loanAmt').value);  
 }
 function inWords(num) {
-    //2D Array of unit and 11 to 19
     var a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
-    //2D array of tens places but 2nd row is empty --arranged such that it matches the index position.
     var b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
 
     if ((num = num.toString()).length > 9)
@@ -83,26 +80,25 @@ function inWords(num) {
         document.getElementById('words').style="color:red";
         return 'Amount is Out of Range';
     }
-    //getting number from backward direction
-    n = ('000000000' + num).slice(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);     //spaces and alphabets are not allowed
+    n = ('000000000' + num).slice(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
     if (!n) 
     {
         document.getElementById('words').style="color:red";
         return 'Enter Valid Amount!!'; 
     }
-    
     var str = '';
-    str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';        
-    str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'Lakh ' : '';
-    str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'Thousand ' : '';
-    str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'Hundred ' : '';
-    str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + 'Rupees only ' : '';
+    str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';
+    str += (n[2] != 0) ? ((str != '' && n[3]==0 && n[4]==0 && n[5]==0) ? 'and ' : '') + (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'Lakh ' : '';
+    str += (n[3] != 0) ? ((str != '' && n[4]==0 && n[5]==0) ? 'and ' : '') + (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'Thousand ' : '';
+    str += (n[4] != 0) ? ((str != '' && n[5]==0) ? 'and ' : '') + (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'Hundred ' : '';
+    str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
+    str += 'Rupees Only ';
     document.getElementById('words').style="color:green";
     return str;
 }
 
 function CaptchaGenerate() {
-    var Rnum1 = Math.floor((Math.random() * 100));
+    var Rnum1 = Math.floor((Math.random() * 10));
     var Rnum2 = Math.floor((Math.random() * 10));
     var opNum = Math.floor((Math.random() * 3) + 1);
 
@@ -136,7 +132,7 @@ function CaptchaValidation()
     if (ActualResult == userResult) {
         document.getElementById("captchamsg").innerHTML = "Captcha validation Successful";
         document.getElementById("captchamsg").style = "color:green";
-        document.getElementById("result").value= ""; 
+        // document.getElementById("result").value= ""; 
         enableSubmitButton();
         NameValidation();
         EmailValidation();
@@ -147,7 +143,7 @@ function CaptchaValidation()
         document.getElementById('submit').disabled = true;
         document.getElementById("captchamsg").innerHTML = "Try Again";
         document.getElementById("captchamsg").style = "color:red";
-        document.getElementById("result").value = "";
+        // document.getElementById("result").value = "";
         CaptchaGenerate();
     }
 }
@@ -164,26 +160,34 @@ function enableSubmitButton()
 
 function generateOtp() {
     const val = Math.floor(1000 + Math.random() * 9000);
-    document.getElementById("otpout").value = val;
-    document.getElementById("otpmsg").innerHTML="";
+    // document.getElementById("otpout").value = val;
+    localStorage.setItem("otpval",val);
+    console.log('generated otp:'+val);    
+    // document.getElementById("otpmsg").innerHTML="";
 }
 
 var count=0;
 function ValidateOTP() {
-    count+=1;
-    if(count>=3)
-    {
-        count=0;
-        window.location.replace("http://pixel6.co/error.html");
-    }
-    var a = document.getElementById("otpin").value;
-    var b = document.getElementById("otpout").value;
-    if (a == b && b.length>0) {
-        document.getElementById("otp").disabled="true";
+    var otpInput = parseInt(document.getElementById("otpin").value);
+    // var b = document.getElementById("otpout").value;
+    var otpConsole = localStorage.getItem("otpval");
+    if(otpInput>0)
+        {
+            count+=1;
+            // console.log("conunter:"+count);
+            if(count>=3)
+            {
+                count=0;
+                window.location.replace("http://pixel6.co/error.html");
+            }
+        }
+   
+   
+    if (otpConsole == otpInput && otpInput>0) {
         window.location.replace("http://pixel6.co/");
     }
     else {
-         document.getElementById("otpmsg").innerHTML='Invalid OTP !!! ';
+        document.getElementById("otpmsg").innerHTML='Invalid OTP !!! ';
     }
 }
 
